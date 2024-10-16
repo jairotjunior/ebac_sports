@@ -28,7 +28,6 @@ const ProdutosComponent = ({ produtos }: Props) => {
           <Produto
             estaNosFavoritos={produtoEstaNosFavoritos(produto)}
             key={produto.id}
-            produto={produto}
           />
         ))}
       </S.Produtos>
