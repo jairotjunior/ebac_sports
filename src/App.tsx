@@ -1,12 +1,8 @@
-import { Provider } from 'react-redux'
-
-import { store } from './store'
-
 import Header from './components/Header'
 import Produtos from './containers/Produtos'
-import { useGetProdutosQuery } from './services/api'
 
 import { GlobalStyle } from './styles'
+import { useGetProdutosQuery } from './services/api'
 
 export type Produto = {
   id: number
@@ -16,16 +12,15 @@ export type Produto = {
 }
 
 function App() {
-  const { data: produtos } = useGetProdutosQuery()
-
+  const { data } = useGetProdutosQuery()
   return (
-    <Provider store={store}>
+    <>
       <GlobalStyle />
       <div className="container">
         <Header />
-        {produtos && <Produtos produtos={produtos} />}
+        {data && <Produtos produtos={data} />}
       </div>
-    </Provider>
+    </>
   )
 }
 
